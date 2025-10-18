@@ -1,0 +1,7 @@
+parameters:
+    level: 8
+    errorFormat: ticketswap
+    treatPhpDocTypesAsCertain: false
+    editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
+    paths:
+        - src/
