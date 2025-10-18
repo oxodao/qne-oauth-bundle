@@ -15,6 +15,7 @@ class QneOauthBundle extends AbstractBundle
         /** @var ArrayNodeDefinition $node */
         $node = $definition->rootNode();
 
+        // @phpstan-ignore-next-line what the fuck
         $node
             ->children()
             ->scalarNode('url')->isRequired()->cannotBeEmpty()->end()
