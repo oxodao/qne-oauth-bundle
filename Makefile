@@ -10,3 +10,8 @@ composer_install: build
 lint: build
 	@docker run --rm -v $(PWD):/app -ti qne-oauth-bundle vendor/bin/php-cs-fixer fix
 	@docker run --rm -v $(PWD):/app -ti qne-oauth-bundle vendor/bin/phpstan analyse
+
+lint-ci: build
+	@docker run --rm -v $(PWD):/app qne-oauth-bundle composer install
+	@docker run --rm -v $(PWD):/app qne-oauth-bundle vendor/bin/php-cs-fixer fix --dry-run --diff
+	@docker run --rm -v $(PWD):/app qne-oauth-bundle vendor/bin/phpstan analyse

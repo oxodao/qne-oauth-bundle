@@ -17,4 +17,4 @@ jobs:
       - name: 'Lint'
         env:
           CI: '1'
-        run: 'make lint'
+        run: 'make lint-ci'
