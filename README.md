@@ -102,7 +102,7 @@ qne_oauth_callback:
   controller: Oxodao\QneOAuthBundle\Controller\QneOAuthController::loginCallback
 ```
 
-Finally, in your `security.yaml` we'll hook the custom UserChecker that take care of updating the roles on each token refresh:
+Finally, in your `security.yaml` we'll hook the custom UserChecker that take care of updating the roles on each token creation/refresh
 ```yaml
 [...]
 
@@ -111,10 +111,19 @@ login_refresh:
   pattern: ^/api/login_refresh
   stateless: true
   provider: user_provider
-  user_checker: App\Security\OAuthUserChecker # <--- Add this line
+  user_checker: Oxodao\QneOAuthBundle\Security\OAuthUserChecker # <--- Add this line
   refresh_jwt:
     check_path: /api/login_refresh
-    
+
+login:
+  pattern: ^/api/login
+  stateless: true
+  provider: user_provider
+  user_checker: Oxodao\QneOAuthBundle\Security\OAuthUserChecker # <--- Add this line
+  json_login:
+    check_path: /api/login
+    success_handler: lexik_jwt_authentication.handler.authentication_success
+    failure_handler: lexik_jwt_authentication.handler.authentication_failure
 [...]
 ```
 
