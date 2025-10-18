@@ -15,12 +15,11 @@ class QneOauthBundle extends AbstractBundle
         /** @var ArrayNodeDefinition $node */
         $node = $definition->rootNode();
 
-        // @phpstan-ignore-next-line what the fuck
         $node
             ->children()
             ->scalarNode('url')->isRequired()->cannotBeEmpty()->end()
-        ->scalarNode('client_id')->isRequired()->cannotBeEmpty()->end()
-        ->scalarNode('client_secret')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('client_id')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('client_secret')->isRequired()->cannotBeEmpty()->end()
             ->scalarNode('redirect_url')->isRequired()->cannotBeEmpty()->end()
             ->scalarNode('role_parser')->isRequired()->cannotBeEmpty()->end()
             ->scalarNode('login_url_as_json')->defaultFalse()->end()
